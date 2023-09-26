@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}       
+   
+{% block content %}
+
+<style>
+  .menu-container{
+      display:grid;
+      grid-template-columns:1fr 3fr
+  }
+  
+</style>
+
+{% for chat in chat %}
+<div class="container">
+  <img src="{% static 'images/human.jpg' %}" alt="Avatar">
+  <p>{{chat.human}}</p>
+  <span class="time-right">11:00</span>
+</div>
+
+<div class="container darker">
+  <img src="{% static 'images/ai.jpg' %}" alt="Avatar" class="right">
+  <p>{{chat.ai}}</p>
+  <span class="time-left">11:01</span>
+</div>
+
+{% endfor %}
+
+
+
+<div class="message">
+    <form action="" method="POST">
+      {% csrf_token %}
+      <h3>let discuss the book</h3>
+      <input name="body" placeholder="Write your message here..." />
+      
+    </form>
+  </div>
+
+ {% endblock content %}
+ 
